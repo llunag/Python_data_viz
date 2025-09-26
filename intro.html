@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Welcome to your Jupyter Book &#8212; Informe de Data Viz</title>
+    <title>Introducción &#8212; Desarrollo de un modelo de regresión logística para ayudar en el diagnostico de fibrosis hepática</title>
   
   
   
@@ -60,12 +60,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown Files" href="markdown.html" />
+    <link rel="next" title="Análisis exploratorio de los datos" href="Fibrosis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -149,8 +147,8 @@
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="Informe de Data Viz - Home"/>
-    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Informe de Data Viz - Home"/>
+    <img src="_static/liver.jpg" class="logo__image only-light" alt="Desarrollo de un modelo de regresión logística para ayudar en el diagnostico de fibrosis hepática - Home"/>
+    <img src="_static/liver.jpg" class="logo__image only-dark pst-js-only" alt="Desarrollo de un modelo de regresión logística para ayudar en el diagnostico de fibrosis hepática - Home"/>
   
   
 </a></div>
@@ -167,15 +165,14 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Welcome to your Jupyter Book
+                    Introducción
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
-<li class="toctree-l1"><a class="reference internal" href="univariado.html">Primer Texto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Fibrosis.html">Análisis exploratorio de los datos</a></li>
+
+
 </ul>
 
     </div>
@@ -345,7 +342,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -356,11 +355,19 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Welcome to your Jupyter Book</h1>
+    <h1>Introducción</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo">Objetivo</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -370,21 +377,22 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-your-jupyter-book">
-<h1>Welcome to your Jupyter Book<a class="headerlink" href="#welcome-to-your-jupyter-book" title="Link to this heading">#</a></h1>
-<p>This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a> for more information.</p>
-<p>Check out the content pages bundled with this sample book to see more.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduccion">
+<h1>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h1>
+<p>La fibrosis es el desarrollo en exceso de tejido en un órgano, lo que puede dificultar su función normal. Esta puede ser causada por lesiones repetidas, exposición a contaminantes o como parte de una enfermedad genética.</p>
+<p>La Fibrosis hepática es la formación de una cantidad excesivamente grande de tejido cicatricial en el hígado, que puede llevar a la cirrosis (reemplazo de tejido sano por tejido cicatricial) si la cicatrización es grave. Se produce cuando el hígado intenta reparar y reemplazar las células dañadas.</p>
+<p>El diagnóstico de la fibrosis se puede establecer a menudo a partir de pruebas de sangre o por métodos de diagnóstico por imágenes médicas, aunque a veces es necesaria una biopsia hepática, la cual es una prueba invasiva. Las técnicas de imágenes, aunque no son invasivas pueden ser costosas o poco accesibles ya que se necesita un equipo especial. Por lo que el desarrollo de modelos predictivos basados en variables cuyo método de obtención es no invasiva o mínimamente invasivas (como extracción de sangre) y cuya obtención es muchas veces rutinarias es muy prometedor para el diagnostico temprano de la fibrosis hepática. Estos métodos ofrecen una alternativa confiable, no invasiva y debajo costo en comparación con métodos de diagnóstico convencionales.</p>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">#</a></h2>
+<p>Desarrollar un modelo de regresión logística que permita estimar la probabilidad de presencia de fibrosis hepática.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
-<li class="toctree-l1"><a class="reference internal" href="univariado.html">Primer Texto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Fibrosis.html">Análisis exploratorio de los datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Fibrosis.html#analisis-univariado">Análisis univariado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Fibrosis.html#analisis-bivariado">Analisis bivariado</a></li>
 </ul>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -418,11 +426,11 @@ It does not go in-depth into any particular topic - check out <a class="referenc
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="markdown.html"
+       href="Fibrosis.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
+        <p class="prev-next-title">Análisis exploratorio de los datos</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -433,6 +441,22 @@ It does not go in-depth into any particular topic - check out <a class="referenc
             
             
               
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo">Objetivo</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -442,7 +466,7 @@ It does not go in-depth into any particular topic - check out <a class="referenc
   <div class="footer-item">
     
 <p class="component-author">
-By Luis Luna
+By Luis Luna, Andres Parodi, Issam Cherenek
 </p>
 
   </div>
