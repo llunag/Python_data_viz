@@ -169,8 +169,6 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Análisis exploratorio de los datos</a></li>
-
-
 </ul>
 
     </div>
@@ -363,19 +361,17 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Análisis exploratorio de los datos</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-univariado">Análisis univariado</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-continuas">Variables Continuas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varibles-categoricas">Varibles Categoricas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-univariado">Análisis univariado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-continuas">Variables Continuas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varibles-categoricas">Varibles Categoricas</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Analisis bivariado</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorica-vs-numerica">Categorica vs numerica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorica-vs-categorica">Categorica vs categorica</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Analisis bivariado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorica-vs-numerica">Categorica vs numerica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorica-vs-categorica">Categorica vs categorica</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -692,11 +688,10 @@ memory usage: 53.0 KB
 <p>5 rows × 21 columns</p>
 </div></div></div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="analisis-univariado">
-<h1>Análisis univariado<a class="headerlink" href="#analisis-univariado" title="Link to this heading">#</a></h1>
+<section id="analisis-univariado">
+<h2>Análisis univariado<a class="headerlink" href="#analisis-univariado" title="Link to this heading">#</a></h2>
 <section id="variables-continuas">
-<h2>Variables Continuas<a class="headerlink" href="#variables-continuas" title="Link to this heading">#</a></h2>
+<h3>Variables Continuas<a class="headerlink" href="#variables-continuas" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear figura con 2 filas y 3 columnas</span>
@@ -846,7 +841,7 @@ memory usage: 53.0 KB
 </div>
 </section>
 <section id="varibles-categoricas">
-<h2>Varibles Categoricas<a class="headerlink" href="#varibles-categoricas" title="Link to this heading">#</a></h2>
+<h3>Varibles Categoricas<a class="headerlink" href="#varibles-categoricas" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === Calcular frecuencias y porcentajes ===</span>
@@ -897,10 +892,10 @@ memory usage: 53.0 KB
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="analisis-bivariado">
-<h1>Analisis bivariado<a class="headerlink" href="#analisis-bivariado" title="Link to this heading">#</a></h1>
+<section id="analisis-bivariado">
+<h2>Analisis bivariado<a class="headerlink" href="#analisis-bivariado" title="Link to this heading">#</a></h2>
 <section id="categorica-vs-numerica">
-<h2>Categorica vs numerica<a class="headerlink" href="#categorica-vs-numerica" title="Link to this heading">#</a></h2>
+<h3>Categorica vs numerica<a class="headerlink" href="#categorica-vs-numerica" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">&quot;number&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
@@ -1538,7 +1533,7 @@ memory usage: 53.0 KB
 </div>
 </section>
 <section id="categorica-vs-categorica">
-<h2>Categorica vs categorica<a class="headerlink" href="#categorica-vs-categorica" title="Link to this heading">#</a></h2>
+<h3>Categorica vs categorica<a class="headerlink" href="#categorica-vs-categorica" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tabla</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;fibrosis&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sexo&quot;</span><span class="p">])</span>
@@ -1577,6 +1572,7 @@ fibrosis
 <img alt="_images/22410282570675419980d298457a3b7ddaeee3d721c5815afc7bf03626d54f72.png" src="_images/22410282570675419980d298457a3b7ddaeee3d721c5815afc7bf03626d54f72.png" />
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -1636,19 +1632,17 @@ fibrosis
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Análisis exploratorio de los datos</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-univariado">Análisis univariado</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-continuas">Variables Continuas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varibles-categoricas">Varibles Categoricas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-univariado">Análisis univariado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-continuas">Variables Continuas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varibles-categoricas">Varibles Categoricas</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Analisis bivariado</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorica-vs-numerica">Categorica vs numerica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorica-vs-categorica">Categorica vs categorica</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Analisis bivariado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorica-vs-numerica">Categorica vs numerica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorica-vs-categorica">Categorica vs categorica</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
