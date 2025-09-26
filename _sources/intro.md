@@ -1,3 +1,5 @@
+<span style="font-size:26pt"><b>Desarrollo de un modelo de regresión logística para ayudar en el diagnostico de fibrosis hepática</b></span>
+
 # Introducción
 
 La fibrosis es el desarrollo en exceso de tejido en un órgano, lo que puede dificultar su función normal. Esta puede ser causada por lesiones repetidas, exposición a contaminantes o como parte de una enfermedad genética.

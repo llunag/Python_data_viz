@@ -384,199 +384,19 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="analisis-exploratorio-de-los-datos">
 <h1>Análisis exploratorio de los datos<a class="headerlink" href="#analisis-exploratorio-de-los-datos" title="Link to this heading">#</a></h1>
-<div class="cell docutils container">
+<p><em>Estructura de los datos</em></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Carga los datos</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;C:/Users/luis_/Desktop\MaestriaEstadisticaAplicada/_11DataViz/Trabajo Fibrosis/fibrosis.csv&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>glucemia</th>
-      <th>urea</th>
-      <th>creat</th>
-      <th>colester</th>
-      <th>trgl</th>
-      <th>got</th>
-      <th>gpt</th>
-      <th>ggt</th>
-      <th>fa</th>
-      <th>biltotal</th>
-      <th>...</th>
-      <th>alb</th>
-      <th>na</th>
-      <th>k</th>
-      <th>leucos</th>
-      <th>hcto</th>
-      <th>plaq</th>
-      <th>iq</th>
-      <th>fibrin</th>
-      <th>fibrosis</th>
-      <th>sexo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>158</td>
-      <td>26</td>
-      <td>1.6</td>
-      <td>182</td>
-      <td>218.0</td>
-      <td>83</td>
-      <td>174</td>
-      <td>52</td>
-      <td>35</td>
-      <td>1.7</td>
-      <td>...</td>
-      <td>4.7</td>
-      <td>143</td>
-      <td>4.7</td>
-      <td>4730</td>
-      <td>48.0</td>
-      <td>88000</td>
-      <td>100.0</td>
-      <td>245</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>112</td>
-      <td>31</td>
-      <td>1.5</td>
-      <td>20</td>
-      <td>343.0</td>
-      <td>20</td>
-      <td>36</td>
-      <td>42</td>
-      <td>49</td>
-      <td>1.1</td>
-      <td>...</td>
-      <td>4.0</td>
-      <td>143</td>
-      <td>5.0</td>
-      <td>5380</td>
-      <td>46.0</td>
-      <td>147000</td>
-      <td>100.0</td>
-      <td>244</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>79</td>
-      <td>28</td>
-      <td>1.5</td>
-      <td>188</td>
-      <td>251.0</td>
-      <td>115</td>
-      <td>90</td>
-      <td>133</td>
-      <td>122</td>
-      <td>1.2</td>
-      <td>...</td>
-      <td>4.9</td>
-      <td>141</td>
-      <td>4.7</td>
-      <td>3600</td>
-      <td>47.0</td>
-      <td>99000</td>
-      <td>100.0</td>
-      <td>205</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>103</td>
-      <td>31</td>
-      <td>1.3</td>
-      <td>170</td>
-      <td>265.0</td>
-      <td>88</td>
-      <td>185</td>
-      <td>108</td>
-      <td>91</td>
-      <td>1.1</td>
-      <td>...</td>
-      <td>5.3</td>
-      <td>137</td>
-      <td>3.9</td>
-      <td>4460</td>
-      <td>49.0</td>
-      <td>104000</td>
-      <td>100.0</td>
-      <td>220</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>126</td>
-      <td>26</td>
-      <td>1.3</td>
-      <td>190</td>
-      <td>272.0</td>
-      <td>67</td>
-      <td>185</td>
-      <td>96</td>
-      <td>114</td>
-      <td>0.8</td>
-      <td>...</td>
-      <td>4.8</td>
-      <td>141</td>
-      <td>4.4</td>
-      <td>4550</td>
-      <td>46.0</td>
-      <td>73000</td>
-      <td>100.0</td>
-      <td>190</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 21 columns</p>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estructura de los datos</span>
-<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 322 entries, 0 to 321
@@ -609,184 +429,6 @@ memory usage: 53.0 KB
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Transformar los datos </span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;fibrosis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fibrosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;sexo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sexo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;F&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>glucemia</th>
-      <th>urea</th>
-      <th>creat</th>
-      <th>colester</th>
-      <th>trgl</th>
-      <th>got</th>
-      <th>gpt</th>
-      <th>ggt</th>
-      <th>fa</th>
-      <th>biltotal</th>
-      <th>...</th>
-      <th>alb</th>
-      <th>na</th>
-      <th>k</th>
-      <th>leucos</th>
-      <th>hcto</th>
-      <th>plaq</th>
-      <th>iq</th>
-      <th>fibrin</th>
-      <th>fibrosis</th>
-      <th>sexo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>158</td>
-      <td>26</td>
-      <td>1.6</td>
-      <td>182</td>
-      <td>218.0</td>
-      <td>83</td>
-      <td>174</td>
-      <td>52</td>
-      <td>35</td>
-      <td>1.7</td>
-      <td>...</td>
-      <td>4.7</td>
-      <td>143</td>
-      <td>4.7</td>
-      <td>4730</td>
-      <td>48.0</td>
-      <td>88000</td>
-      <td>100.0</td>
-      <td>245</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>112</td>
-      <td>31</td>
-      <td>1.5</td>
-      <td>20</td>
-      <td>343.0</td>
-      <td>20</td>
-      <td>36</td>
-      <td>42</td>
-      <td>49</td>
-      <td>1.1</td>
-      <td>...</td>
-      <td>4.0</td>
-      <td>143</td>
-      <td>5.0</td>
-      <td>5380</td>
-      <td>46.0</td>
-      <td>147000</td>
-      <td>100.0</td>
-      <td>244</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>79</td>
-      <td>28</td>
-      <td>1.5</td>
-      <td>188</td>
-      <td>251.0</td>
-      <td>115</td>
-      <td>90</td>
-      <td>133</td>
-      <td>122</td>
-      <td>1.2</td>
-      <td>...</td>
-      <td>4.9</td>
-      <td>141</td>
-      <td>4.7</td>
-      <td>3600</td>
-      <td>47.0</td>
-      <td>99000</td>
-      <td>100.0</td>
-      <td>205</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>103</td>
-      <td>31</td>
-      <td>1.3</td>
-      <td>170</td>
-      <td>265.0</td>
-      <td>88</td>
-      <td>185</td>
-      <td>108</td>
-      <td>91</td>
-      <td>1.1</td>
-      <td>...</td>
-      <td>5.3</td>
-      <td>137</td>
-      <td>3.9</td>
-      <td>4460</td>
-      <td>49.0</td>
-      <td>104000</td>
-      <td>100.0</td>
-      <td>220</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>126</td>
-      <td>26</td>
-      <td>1.3</td>
-      <td>190</td>
-      <td>272.0</td>
-      <td>67</td>
-      <td>185</td>
-      <td>96</td>
-      <td>114</td>
-      <td>0.8</td>
-      <td>...</td>
-      <td>4.8</td>
-      <td>141</td>
-      <td>4.4</td>
-      <td>4550</td>
-      <td>46.0</td>
-      <td>73000</td>
-      <td>100.0</td>
-      <td>190</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 21 columns</p>
-</div></div></div>
 </div>
 <section id="descripcion-de-las-variables">
 <h2>Descripción de las variables<a class="headerlink" href="#descripcion-de-las-variables" title="Link to this heading">#</a></h2>
@@ -893,7 +535,12 @@ memory usage: 53.0 KB
 <section id="variables-continuas">
 <h3>Variables Continuas<a class="headerlink" href="#variables-continuas" title="Link to this heading">#</a></h3>
 <p>En la siguiente figura se observa el diagrama de barra y bigote de la glucemia la cual tiene una mediana de 101 y la cual presenta valores atípicos hacia arriba, lo que indica que tienen una distribución sesgada a la derecha. En el caso de la urea su mediana es 30.5 y se observan valores extremos que superan el valor de 70. Para la creatinina su mediana es de 1.1 y el 75% de sus valores están por debajo de 1.39, también se observan valores atípicos siendo el valor máximo 9.4. El colesterol presenta una mediana de 180, se observa valores atípicos tanto por encima como por debajo de la caja central. Los triglicéridos tienen una mediana de 135.5 y el 75% de sus observaciones esta por debajo de 188.5, aunque presenta valores atípicos hacia arriba con un valor máximo de 591. El GOT presenta una mediana de 81 y también presenta valores atípicos por encima de 200.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear figura con 2 filas y 3 columnas</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
@@ -933,12 +580,18 @@ memory usage: 53.0 KB
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/b3dac383fb9ab435aea2b729b68c155f1ea6a30996da72e7f15994ea173ab67b.png" src="_images/b3dac383fb9ab435aea2b729b68c155f1ea6a30996da72e7f15994ea173ab67b.png" />
 </div>
 </div>
 <p>En esta figura podemos ver que el diagrama de barra y bigote del GPT presenta valores atípicos por arriba, el GPT tienen una mediana de 81 y su máximo valor es de 766. El GGT tiene el 75% de sus valores por debajo de 135.2 y su máximo valor es de 1884. La fosfatasa alcalina presenta también valores atípicos por arriba y el 75% de sus observaciones están por debajo de 122. La bilirrubina total también presenta valores atípicos por arriba, con mediana de 1. Las proteínas totales presentan valores atípicos por arriba y debajo de la caja central, y tiene una mediana de 7.1. La albúmina tiene una mediana de 4.3 y su valor máximo es de 7.7.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear figura con 2 filas y 3 columnas</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
@@ -978,12 +631,18 @@ memory usage: 53.0 KB
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/912df4a46b04fc643469a7666b45269b47da94fc3ab5c41126076aa5d82fa031.png" src="_images/912df4a46b04fc643469a7666b45269b47da94fc3ab5c41126076aa5d82fa031.png" />
 </div>
 </div>
 <p>En esta figura podemos ver que el sodio, hematocrito y plaquetas presentan valores atípicos por encima y por debajo de la caja principal. Las variables potasio, leucocitos, fibrinógeno presenta solo valores atípicos por arriba de la caja principal. Por último, el índice de Quick presenta una mediana de 100 y el 75% de los valores se encuentra por encima de 96, y su valor mínimo es 45.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
@@ -1034,11 +693,8 @@ memory usage: 53.0 KB
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\luis_\AppData\Local\Temp\ipykernel_16108\2499721787.py:45: UserWarning: tight_layout not applied: number of columns in subplot specifications must be multiples of one another.
-  plt.tight_layout()
-</pre></div>
-</div>
 <img alt="_images/8fef1a723f4efd7ab475cfb0fd0e79ce4c48ed3e92b180bb78d5cb68fc6fd3d8.png" src="_images/8fef1a723f4efd7ab475cfb0fd0e79ce4c48ed3e92b180bb78d5cb68fc6fd3d8.png" />
 </div>
 </div>
@@ -1046,7 +702,12 @@ memory usage: 53.0 KB
 <section id="varibles-categoricas">
 <h3>Varibles Categoricas<a class="headerlink" href="#varibles-categoricas" title="Link to this heading">#</a></h3>
 <p>Podemos observar en el diagrama de barras que el sexo masculino corresponde al 50.3% (162) de las observaciones y el femenino corresponde al 49.7% (160). Con respecto a la fibrosis el 43.8% (141) de las observaciones no presenta fibrosis y el 56.2% (181) si la presenta, por lo que podemos observar que el conjunto de datos esta balanceado tanto para el sexo como la fibrosis.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === Calcular frecuencias y porcentajes ===</span>
 <span class="n">sexo_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sexo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
@@ -1090,6 +751,7 @@ memory usage: 53.0 KB
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/3417464b7c3747585c2dba9102d1e08f6d438000791fb06cf61a73da5549f183.png" src="_images/3417464b7c3747585c2dba9102d1e08f6d438000791fb06cf61a73da5549f183.png" />
 </div>
@@ -1099,7 +761,12 @@ memory usage: 53.0 KB
 <section id="analisis-bivariado">
 <h2>Analisis bivariado<a class="headerlink" href="#analisis-bivariado" title="Link to this heading">#</a></h2>
 <p>Podemos observar en la siguiente tabla que para las variables de GOT, GPT, GGT y Fosfatasa alcalina (fa) presentan medianas relativamente diferentes cuando hay ausencia y cuando hay presencia de fibrosis, aunque debemos realizar una prueba de diferencia de medianas para determinar si estas diferencias son realmente significativas.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">&quot;number&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 
@@ -1125,18 +792,14 @@ memory usage: 53.0 KB
     <span class="n">res_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
 
 <span class="n">tabla_resumen</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">res_list</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;variable&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;variable&quot;</span><span class="p">,</span> <span class="s2">&quot;fibrosis&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;sd&quot;</span><span class="p">,</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span> <span class="s2">&quot;iqr&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;q1&quot;</span><span class="p">,</span> <span class="s2">&quot;q3&quot;</span><span class="p">]</span>
+
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;variable&quot;</span><span class="p">,</span> <span class="s2">&quot;fibrosis&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;sd&quot;</span><span class="p">,</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span> <span class="s2">&quot;iqr&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;q1&quot;</span><span class="p">,</span> <span class="s2">&quot;q3&quot;</span><span class="p">]</span>
 <span class="n">tabla_resumen</span> <span class="o">=</span> <span class="n">tabla_resumen</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span>
 <span class="n">tabla_resumen</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1766,7 +1429,12 @@ memory usage: 53.0 KB
 <section id="correlaciones-entre-variables-numericas">
 <h3>Correlaciones entre variables numéricas<a class="headerlink" href="#correlaciones-entre-variables-numericas" title="Link to this heading">#</a></h3>
 <p>En la en el mapa de calor de correlaciones se puede observar que GOT y GGT tienen una alta correlación (0.8), seguidas por correlaciones de valor 0.53 entre Urea y Creatinina, GGT y Fosfatasa alcalina, y Leucocitos y Hematocritos. Las variables GGT y Bilirrubina total tienen una correlación de 0.43 mientras que Leucocitos y Fibrinógeno tienen una correlación de 0.40. Todas las correlaciones mencionadas anteriormente son positivas, las demás correlaciones tienen un valor absoluto por debajo de 0.4.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numericas</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">])</span>
 
@@ -1784,6 +1452,7 @@ memory usage: 53.0 KB
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/22410282570675419980d298457a3b7ddaeee3d721c5815afc7bf03626d54f72.png" src="_images/22410282570675419980d298457a3b7ddaeee3d721c5815afc7bf03626d54f72.png" />
 </div>
