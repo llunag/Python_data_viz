@@ -361,14 +361,14 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-de-las-variables">Descripción de las variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-univariado">Análisis univariado</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-continuas">Variables Continuas</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varibles-categoricas">Varibles Categoricas</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Analisis bivariado</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorica-vs-numerica">Categorica vs numerica</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorica-vs-categorica">Categorica vs categorica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlaciones-entre-variables-numericas">Correlaciones entre variables numéricas</a></li>
 </ul>
 </li>
 </ul>
@@ -396,79 +396,179 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargo los datos</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;fibrosis.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Carga los datos</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;C:/Users/luis_/Desktop\MaestriaEstadisticaAplicada/_11DataViz/Trabajo Fibrosis/fibrosis.csv&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Cargo los datos</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;fibrosis.csv&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\common.py:873,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
-<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
-<span class="g g-Whitespace">    </span><span class="mi">871</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="c1"># Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">873</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">874</span>             <span class="n">handle</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">875</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">876</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">877</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="c1"># Binary mode</span>
-<span class="g g-Whitespace">    </span><span class="mi">882</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;fibrosis.csv&#39;
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>glucemia</th>
+      <th>urea</th>
+      <th>creat</th>
+      <th>colester</th>
+      <th>trgl</th>
+      <th>got</th>
+      <th>gpt</th>
+      <th>ggt</th>
+      <th>fa</th>
+      <th>biltotal</th>
+      <th>...</th>
+      <th>alb</th>
+      <th>na</th>
+      <th>k</th>
+      <th>leucos</th>
+      <th>hcto</th>
+      <th>plaq</th>
+      <th>iq</th>
+      <th>fibrin</th>
+      <th>fibrosis</th>
+      <th>sexo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>158</td>
+      <td>26</td>
+      <td>1.6</td>
+      <td>182</td>
+      <td>218.0</td>
+      <td>83</td>
+      <td>174</td>
+      <td>52</td>
+      <td>35</td>
+      <td>1.7</td>
+      <td>...</td>
+      <td>4.7</td>
+      <td>143</td>
+      <td>4.7</td>
+      <td>4730</td>
+      <td>48.0</td>
+      <td>88000</td>
+      <td>100.0</td>
+      <td>245</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>112</td>
+      <td>31</td>
+      <td>1.5</td>
+      <td>20</td>
+      <td>343.0</td>
+      <td>20</td>
+      <td>36</td>
+      <td>42</td>
+      <td>49</td>
+      <td>1.1</td>
+      <td>...</td>
+      <td>4.0</td>
+      <td>143</td>
+      <td>5.0</td>
+      <td>5380</td>
+      <td>46.0</td>
+      <td>147000</td>
+      <td>100.0</td>
+      <td>244</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>79</td>
+      <td>28</td>
+      <td>1.5</td>
+      <td>188</td>
+      <td>251.0</td>
+      <td>115</td>
+      <td>90</td>
+      <td>133</td>
+      <td>122</td>
+      <td>1.2</td>
+      <td>...</td>
+      <td>4.9</td>
+      <td>141</td>
+      <td>4.7</td>
+      <td>3600</td>
+      <td>47.0</td>
+      <td>99000</td>
+      <td>100.0</td>
+      <td>205</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>103</td>
+      <td>31</td>
+      <td>1.3</td>
+      <td>170</td>
+      <td>265.0</td>
+      <td>88</td>
+      <td>185</td>
+      <td>108</td>
+      <td>91</td>
+      <td>1.1</td>
+      <td>...</td>
+      <td>5.3</td>
+      <td>137</td>
+      <td>3.9</td>
+      <td>4460</td>
+      <td>49.0</td>
+      <td>104000</td>
+      <td>100.0</td>
+      <td>220</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>126</td>
+      <td>26</td>
+      <td>1.3</td>
+      <td>190</td>
+      <td>272.0</td>
+      <td>67</td>
+      <td>185</td>
+      <td>96</td>
+      <td>114</td>
+      <td>0.8</td>
+      <td>...</td>
+      <td>4.8</td>
+      <td>141</td>
+      <td>4.4</td>
+      <td>4550</td>
+      <td>46.0</td>
+      <td>73000</td>
+      <td>100.0</td>
+      <td>190</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 21 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -688,10 +788,111 @@ memory usage: 53.0 KB
 <p>5 rows × 21 columns</p>
 </div></div></div>
 </div>
+<section id="descripcion-de-las-variables">
+<h2>Descripción de las variables<a class="headerlink" href="#descripcion-de-las-variables" title="Link to this heading">#</a></h2>
+<p>En la siguiente tabla se puede ver una descripción de las variables utilizadas en este proyecto. Estas variables corresponden a variables clínicas cuya obtención es rutinaria o poco invasiva, solo necesitando extracción de sangre, las cuales podrían ser útiles a la hora de determinar la presencia o ausencia de fibrosis hepática.</p>
+<p><strong>Tabla:</strong> Descripción de las variables del estudio</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Descripción</p></th>
+<th class="head"><p>Tipo de variable</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Glucemia</p></td>
+<td><p>Nivel de glucosa en sangre</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-odd"><td><p>Urea</p></td>
+<td><p>Producto de desecho renal</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-even"><td><p>Creatinina</p></td>
+<td><p>Indicador de función renal</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-odd"><td><p>Colesterol</p></td>
+<td><p>Lípido total en sangre</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-even"><td><p>Triglicéridos</p></td>
+<td><p>Tipo de grasa en sangre</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-odd"><td><p>GOT</p></td>
+<td><p>Enzima hepática</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-even"><td><p>GPT</p></td>
+<td><p>Enzima hepática</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-odd"><td><p>GGT</p></td>
+<td><p>Enzima hepática</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-even"><td><p>Fosfatasa alcalina</p></td>
+<td><p>Enzima hepática y ósea</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bilirrubina total</p></td>
+<td><p>Producto de desecho del hígado</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-even"><td><p>Proteínas totales</p></td>
+<td><p>Suma de proteínas plasmáticas</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-odd"><td><p>Albúmina</p></td>
+<td><p>Principal proteína plasmática</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-even"><td><p>Sodio</p></td>
+<td><p>Electrolito</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-odd"><td><p>Potasio</p></td>
+<td><p>Electrolito</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-even"><td><p>Leucocitos</p></td>
+<td><p>Glóbulos blancos</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hematocrito</p></td>
+<td><p>Proporción de glóbulos rojos</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-even"><td><p>Plaquetas</p></td>
+<td><p>Células de coagulación</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-odd"><td><p>Índice de Quick</p></td>
+<td><p>Tiempo de coagulación de la sangre usando reacción de Quick</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-even"><td><p>Fibrinógeno</p></td>
+<td><p>Proteína de la coagulación</p></td>
+<td><p>Numérica</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sexo</p></td>
+<td><p>Masculino / Femenino</p></td>
+<td><p>Categórica (binaria)</p></td>
+</tr>
+<tr class="row-even"><td><p>Fibrosis (objetivo)</p></td>
+<td><p>Presencia / Ausencia (1 / 0)</p></td>
+<td><p>Categórica (binaria)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="analisis-univariado">
 <h2>Análisis univariado<a class="headerlink" href="#analisis-univariado" title="Link to this heading">#</a></h2>
 <section id="variables-continuas">
 <h3>Variables Continuas<a class="headerlink" href="#variables-continuas" title="Link to this heading">#</a></h3>
+<p>En la siguiente figura se observa el diagrama de barra y bigote de la glucemia la cual tiene una mediana de 101 y la cual presenta valores atípicos hacia arriba, lo que indica que tienen una distribución sesgada a la derecha. En el caso de la urea su mediana es 30.5 y se observan valores extremos que superan el valor de 70. Para la creatinina su mediana es de 1.1 y el 75% de sus valores están por debajo de 1.39, también se observan valores atípicos siendo el valor máximo 9.4. El colesterol presenta una mediana de 180, se observa valores atípicos tanto por encima como por debajo de la caja central. Los triglicéridos tienen una mediana de 135.5 y el 75% de sus observaciones esta por debajo de 188.5, aunque presenta valores atípicos hacia arriba con un valor máximo de 591. El GOT presenta una mediana de 81 y también presenta valores atípicos por encima de 200.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear figura con 2 filas y 3 columnas</span>
@@ -736,6 +937,7 @@ memory usage: 53.0 KB
 <img alt="_images/b3dac383fb9ab435aea2b729b68c155f1ea6a30996da72e7f15994ea173ab67b.png" src="_images/b3dac383fb9ab435aea2b729b68c155f1ea6a30996da72e7f15994ea173ab67b.png" />
 </div>
 </div>
+<p>En esta figura podemos ver que el diagrama de barra y bigote del GPT presenta valores atípicos por arriba, el GPT tienen una mediana de 81 y su máximo valor es de 766. El GGT tiene el 75% de sus valores por debajo de 135.2 y su máximo valor es de 1884. La fosfatasa alcalina presenta también valores atípicos por arriba y el 75% de sus observaciones están por debajo de 122. La bilirrubina total también presenta valores atípicos por arriba, con mediana de 1. Las proteínas totales presentan valores atípicos por arriba y debajo de la caja central, y tiene una mediana de 7.1. La albúmina tiene una mediana de 4.3 y su valor máximo es de 7.7.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear figura con 2 filas y 3 columnas</span>
@@ -780,6 +982,7 @@ memory usage: 53.0 KB
 <img alt="_images/912df4a46b04fc643469a7666b45269b47da94fc3ab5c41126076aa5d82fa031.png" src="_images/912df4a46b04fc643469a7666b45269b47da94fc3ab5c41126076aa5d82fa031.png" />
 </div>
 </div>
+<p>En esta figura podemos ver que el sodio, hematocrito y plaquetas presentan valores atípicos por encima y por debajo de la caja principal. Las variables potasio, leucocitos, fibrinógeno presenta solo valores atípicos por arriba de la caja principal. Por último, el índice de Quick presenta una mediana de 100 y el 75% de los valores se encuentra por encima de 96, y su valor mínimo es 45.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -832,7 +1035,7 @@ memory usage: 53.0 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\luis_\AppData\Local\Temp\ipykernel_17360\2499721787.py:45: UserWarning: tight_layout not applied: number of columns in subplot specifications must be multiples of one another.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\luis_\AppData\Local\Temp\ipykernel_16108\2499721787.py:45: UserWarning: tight_layout not applied: number of columns in subplot specifications must be multiples of one another.
   plt.tight_layout()
 </pre></div>
 </div>
@@ -842,6 +1045,7 @@ memory usage: 53.0 KB
 </section>
 <section id="varibles-categoricas">
 <h3>Varibles Categoricas<a class="headerlink" href="#varibles-categoricas" title="Link to this heading">#</a></h3>
+<p>Podemos observar en el diagrama de barras que el sexo masculino corresponde al 50.3% (162) de las observaciones y el femenino corresponde al 49.7% (160). Con respecto a la fibrosis el 43.8% (141) de las observaciones no presenta fibrosis y el 56.2% (181) si la presenta, por lo que podemos observar que el conjunto de datos esta balanceado tanto para el sexo como la fibrosis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === Calcular frecuencias y porcentajes ===</span>
@@ -894,8 +1098,7 @@ memory usage: 53.0 KB
 </section>
 <section id="analisis-bivariado">
 <h2>Analisis bivariado<a class="headerlink" href="#analisis-bivariado" title="Link to this heading">#</a></h2>
-<section id="categorica-vs-numerica">
-<h3>Categorica vs numerica<a class="headerlink" href="#categorica-vs-numerica" title="Link to this heading">#</a></h3>
+<p>Podemos observar en la siguiente tabla que para las variables de GOT, GPT, GGT y Fosfatasa alcalina (fa) presentan medianas relativamente diferentes cuando hay ausencia y cuando hay presencia de fibrosis, aunque debemos realizar una prueba de diferencia de medianas para determinar si estas diferencias son realmente significativas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">&quot;number&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
@@ -1531,25 +1734,38 @@ memory usage: 53.0 KB
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="categorica-vs-categorica">
-<h3>Categorica vs categorica<a class="headerlink" href="#categorica-vs-categorica" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tabla</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;fibrosis&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sexo&quot;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tabla</span><span class="p">)</span>
-</pre></div>
+<p>En la tabla de sexo versus fibrosis podemos observar que cuando hay ausencia de fibrosis el sexo femenino tiene mayor proporción con 61.7% (87) y el masculino con 38.3% (54), en cambio cuando hay presencia de fibrosis la proporción de sexo masculino es mayor con 59.7% (108) y la femenina es menor con 40.3% (73).</p>
+<p><strong>Tabla:</strong> Distribución de sexo vs fibrosis</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head text-center"><p>Total</p></th>
+<th class="head text-center"><p>0</p></th>
+<th class="head text-center"><p>1</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Total</strong></p></td>
+<td class="text-center"><p>322</p></td>
+<td class="text-center"><p>141 (43.8%)</p></td>
+<td class="text-center"><p>181 (56.2%)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>M</strong></p></td>
+<td class="text-center"><p>162 (50.3%)</p></td>
+<td class="text-center"><p>54 (38.3%)</p></td>
+<td class="text-center"><p>108 (59.7%)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>F</strong></p></td>
+<td class="text-center"><p>160 (49.7%)</p></td>
+<td class="text-center"><p>87 (61.7%)</p></td>
+<td class="text-center"><p>73 (40.3%)</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sexo       F    M
-fibrosis         
-0         87   54
-1         73  108
-</pre></div>
-</div>
-</div>
-</div>
+<section id="correlaciones-entre-variables-numericas">
+<h3>Correlaciones entre variables numéricas<a class="headerlink" href="#correlaciones-entre-variables-numericas" title="Link to this heading">#</a></h3>
+<p>En la en el mapa de calor de correlaciones se puede observar que GOT y GGT tienen una alta correlación (0.8), seguidas por correlaciones de valor 0.53 entre Urea y Creatinina, GGT y Fosfatasa alcalina, y Leucocitos y Hematocritos. Las variables GGT y Bilirrubina total tienen una correlación de 0.43 mientras que Leucocitos y Fibrinógeno tienen una correlación de 0.40. Todas las correlaciones mencionadas anteriormente son positivas, las demás correlaciones tienen un valor absoluto por debajo de 0.4.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numericas</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">])</span>
@@ -1632,14 +1848,14 @@ fibrosis
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-de-las-variables">Descripción de las variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-univariado">Análisis univariado</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-continuas">Variables Continuas</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varibles-categoricas">Varibles Categoricas</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Analisis bivariado</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorica-vs-numerica">Categorica vs numerica</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorica-vs-categorica">Categorica vs categorica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlaciones-entre-variables-numericas">Correlaciones entre variables numéricas</a></li>
 </ul>
 </li>
 </ul>
