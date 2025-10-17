@@ -1,4 +1,4 @@
-<span style="font-size:26pt"><b>Desarrollo de un modelo de regresión logística para ayudar en el diagnostico de fibrosis hepática</b></span>
+<span style="font-size:26pt"><b>Desarrollo de un modelo de regresión logística para la predicción de fibrosis hepática</b></span>
 
 # Introducción
 
